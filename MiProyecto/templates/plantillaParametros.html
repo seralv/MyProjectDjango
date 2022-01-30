@@ -5,16 +5,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Plantilla con parametros</title>
+    <style>
+        li {
+            color: blue;
+        }
+    </style>
 </head>
 <body>
     <h1>Nombre del canal: {{ nombreCanal }}</h1>
-    <h2>La hora es: {{ fechaActual }}</h2>
+    <h2>La día es: {{ fechaActual.day }}/{{ fechaActual.month|stringformat:"02d" }}/{{ fechaActual.year }}</h2>
+    <h3>Número de lenguajes: {{ lenguajes|length }}</h3>
     <ul>
         {% for leng in lenguajes %}
         {% if leng == 'Python' %}
             <li style = 'color: red;'>{{ leng }}</li>
         {% else %}
-            <li>{{ leng }}</li>
+            <li>{{ leng|first }} : {{ leng|lower }}</li>
         {% endif %}
         {% endfor %}
     </ul>
