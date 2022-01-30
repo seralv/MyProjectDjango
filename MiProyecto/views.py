@@ -52,9 +52,10 @@ def plantilla_parametros(request):
     timezone = pytz.timezone('America/La_Paz')
     nombre = "Uskokrum"
     fechaActual = datetime.now(tz = timezone).strftime("%H:%M:%S")
+    lenguajes = ['Python', 'Ruby', 'JavaScript', 'Java', 'C#', 'Kotlin']
     plantillaExterna = open("/home/sergio/Documentos/Django/MiProyecto/MiProyecto/templates/plantillaParametros.html")
     template = Template(plantillaExterna.read())
     plantillaExterna.close()
-    contexto = Context({"nombreCanal": nombre, "fechaActual": fechaActual})
+    contexto = Context({"nombreCanal": nombre, "fechaActual": fechaActual, "lenguajes": lenguajes})
     documento = template.render(contexto)
     return HttpResponse(documento)

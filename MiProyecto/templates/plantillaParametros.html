@@ -9,5 +9,14 @@
 <body>
     <h1>Nombre del canal: {{ nombreCanal }}</h1>
     <h2>La hora es: {{ fechaActual }}</h2>
+    <ul>
+        {% for leng in lenguajes %}
+        {% if leng == 'Python' %}
+            <li style = 'color: red;'>{{ leng }}</li>
+        {% else %}
+            <li>{{ leng }}</li>
+        {% endif %}
+        {% endfor %}
+    </ul>
 </body>
 </html>
