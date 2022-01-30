@@ -1,5 +1,6 @@
 from datetime import datetime
 from django.template import Template, Context
+import pytz
 
 from django.http import HttpResponse
 
@@ -25,7 +26,8 @@ def categoriaEdad(request, edad):
     return HttpResponse(resultado)
 
 def obtenerMomentoActual(request):
-    respuesta = "<h1>Momento actual: {0}</h1".format(datetime.now().strftime("%A %d/%m/%Y %H:%M:%S"))
+    timezone = pytz.timezone('America/La_Paz')
+    respuesta = "<h1>Momento actual: {0}</h1".format(datetime.now(tz = timezone).strftime("%A %d/%m/%Y %H:%M:%S"))
     return HttpResponse(respuesta)
 
 def contenidoHTML(request, nombre, edad):
@@ -43,5 +45,16 @@ def miPrimeraPlantilla(request):
     template = Template(plantillaExterna.read())
     plantillaExterna.close()
     contexto = Context()
+    documento = template.render(contexto)
+    return HttpResponse(documento)
+
+def plantilla_parametros(request):
+    timezone = pytz.timezone('America/La_Paz')
+    nombre = "Uskokrum"
+    fechaActual = datetime.now(tz = timezone).strftime("%H:%M:%S")
+    plantillaExterna = open("/home/sergio/Documentos/Django/MiProyecto/MiProyecto/templates/plantillaParametros.html")
+    template = Template(plantillaExterna.read())
+    plantillaExterna.close()
+    contexto = Context({"nombreCanal": nombre, "fechaActual": fechaActual})
     documento = template.render(contexto)
     return HttpResponse(documento)
