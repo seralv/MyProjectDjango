@@ -14,6 +14,7 @@
 <body>
     <h1>Nombre del canal: {{ nombreCanal }}</h1>
     <h2>La día es: {{ fechaActual.day }}/{{ fechaActual.month|stringformat:"02d" }}/{{ fechaActual.year }}</h2>
+    {# Este es un comentario de una línea #}
     <h3>Número de lenguajes: {{ lenguajes|length }}</h3>
     <ul>
         {% for leng in lenguajes %}
@@ -24,5 +25,10 @@
         {% endif %}
         {% endfor %}
     </ul>
+    {% comment %}
+        Este es un comentario
+        de más de
+        una línea
+    {% endcomment %}
 </body>
 </html>
