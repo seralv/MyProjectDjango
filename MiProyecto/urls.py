@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from MiProyecto.views import bienvenida, bienvenidaRojo, categoriaEdad, \
-    obtenerMomentoActual, contenidoHTML, miPrimeraPlantilla, plantilla_parametros
+    obtenerMomentoActual, contenidoHTML, miPrimeraPlantilla, plantilla_parametros, plantillaCargado
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,5 +26,6 @@ urlpatterns = [
     path('hora/', obtenerMomentoActual),
     path('contenidohtml/<nombre>/<int:edad>', contenidoHTML),
     path('template/', miPrimeraPlantilla),
-    path('plantilla_parametros/', plantilla_parametros)
+    path('plantilla_parametros/', plantilla_parametros),
+    path('plantilla_cargador', plantillaCargado)
 ]

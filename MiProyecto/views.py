@@ -1,5 +1,5 @@
 from datetime import datetime
-from django.template import Template, Context
+from django.template import Template, Context, loader
 import pytz
 
 from django.http import HttpResponse
@@ -58,4 +58,13 @@ def plantilla_parametros(request):
     plantillaExterna.close()
     contexto = Context({"nombreCanal": nombre, "fechaActual": fechaActual, "lenguajes": lenguajes})
     documento = template.render(contexto)
+    return HttpResponse(documento)
+
+def plantillaCargado(request):
+    nombre = "Template loader"
+    timezone = pytz.timezone('America/La_Paz')
+    fechaActual = datetime.now(tz = timezone)
+    lenguajes = ['Python', 'Ruby', 'JavaScript', 'Java', 'C#', 'Kotlin', 'PHP', 'Rust']
+    plantillaExterna = loader.get_template('plantillaParametros.html')
+    documento = plantillaExterna.render({"nombreCanal": nombre, "fechaActual": fechaActual, "lenguajes": lenguajes})
     return HttpResponse(documento)
