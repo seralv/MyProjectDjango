@@ -1,5 +1,7 @@
 from datetime import datetime
-from django.template import Template, Context, loader
+from django.template import Template, Context
+from django.template.loader import get_template
+from django.shortcuts import render
 import pytz
 
 from django.http import HttpResponse
@@ -65,6 +67,14 @@ def plantillaCargado(request):
     timezone = pytz.timezone('America/La_Paz')
     fechaActual = datetime.now(tz = timezone)
     lenguajes = ['Python', 'Ruby', 'JavaScript', 'Java', 'C#', 'Kotlin', 'PHP', 'Rust']
-    plantillaExterna = loader.get_template('plantillaParametros.html')
+    plantillaExterna = get_template('plantillaParametros.html')
     documento = plantillaExterna.render({"nombreCanal": nombre, "fechaActual": fechaActual, "lenguajes": lenguajes})
     return HttpResponse(documento)
+
+def plantillaShortcut(request):
+    nombre = "Template shortcut"
+    timezone = pytz.timezone('America/La_Paz')
+    fechaActual = datetime.now(tz = timezone)
+    lenguajes = ['Python', 'Ruby', 'JavaScript', 'Java', 'C#', 'Kotlin', 'PHP', 'Rust', 'Go']
+
+    return render(request, 'plantillaParametros.html', {"nombreCanal": nombre, "fechaActual": fechaActual, "lenguajes": lenguajes})
