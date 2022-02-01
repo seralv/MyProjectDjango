@@ -78,3 +78,10 @@ def plantillaShortcut(request):
     lenguajes = ['Python', 'Ruby', 'JavaScript', 'Java', 'C#', 'Kotlin', 'PHP', 'Rust', 'Go']
 
     return render(request, 'plantillaParametros.html', {"nombreCanal": nombre, "fechaActual": fechaActual, "lenguajes": lenguajes})
+
+def plantillaHija1(request):
+    return render(request, 'plantillaHija1.html', {})
+
+
+def plantillaHija2(request):
+    return render(request, 'plantillaHija2.html', {})

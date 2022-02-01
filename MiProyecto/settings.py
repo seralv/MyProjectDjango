@@ -54,7 +54,7 @@ ROOT_URLCONF = 'MiProyecto.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['/Users/edicionesnuevotiempo/Documents/SERGIO/VARIOS/SERGIO/Django/MyProjectDjango/MiProyecto/templates'],
+        'DIRS': ['/home/sergio/Documentos/Django/MiProyecto/MiProyecto/templates/'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
